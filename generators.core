@@ -5,7 +5,7 @@ name: AFRL:utility:generators:0.0.0
 generators:
   strromgen:
     interpreter: python3
-    command: strromgen.py
+    command: python/strromgen.py
     description: Generate ROMS based on YAML file containing strings and values.
     usage: |
       Bunch of cool stuff and such.
