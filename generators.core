@@ -1,0 +1,17 @@
+CAPI=2:
+
+name: AFRL:utility:generators:0.0.0
+
+generators:
+  strromgen:
+    interpreter: python3
+    command: strromgen.py
+    description: Generate ROMS based on YAML file containing strings and values.
+    usage: |
+      Bunch of cool stuff and such.
+      
+      Parameters:
+        yaml_file (str):  input file name to generate rom from in YAML format.
+        rom_file  (str):  output rom file name for binary contents.
+        endian    (str):  Endianess of integers.
+        num_bytes (int):  Number of bytes for integer values.
