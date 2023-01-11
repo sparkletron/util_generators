@@ -38,9 +38,10 @@ class strromgen(Generator):
         exit(1)
       
       # extract, write and output each key and value
-      # write key and value to a rom file
+      # write key, null, and then a value to a rom file
       for key, value in key_dict.items():
           rom_fileD.write(bytearray(key, 'utf8'))
+          rom_fileD.write('\n'.encode())
           rom_fileD.write((value).to_bytes(num_bytes, endian))
       
       rom_fileD.close()

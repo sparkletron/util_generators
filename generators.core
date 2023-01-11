@@ -15,3 +15,13 @@ generators:
         rom_file  (str):  output rom file name for binary contents.
         endian    (str):  Endianess of integers.
         num_bytes (int):  Number of bytes for integer values.
+
+  vpilibgen:
+    interpreter: python3
+    command: python/vpilibgen.py
+    description: Generate C libraries for VPI source code using makefiles.
+    usage: |
+      Bunch of cool stuff and such.
+      
+      Parameters:
+        src_dirs (str):  Directories containing the makefile for various libraries to build.
