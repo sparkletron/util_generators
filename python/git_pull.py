@@ -41,7 +41,9 @@ class git_pull(Generator):
       tag      = self.config.get('tag')
       repo_dir = self.config.get('repo_dir')
       
-      shutil.rmtree(self.files_root + '/' + repo_dir[0], ignore_errors=True)
+      if os.path.exists(self.files_root + '/' + repo_dir[0]):
+        print("INFO: GIT LIBRARY EXISTS IN PATH, NO PULL.")
+        exit(0)
       
       try:
         repo_data = git.Repo.clone_from(repo_url[0], self.files_root + '/' + repo_dir[0])
