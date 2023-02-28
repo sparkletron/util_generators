@@ -1,5 +1,5 @@
 # AFRL Generator Cores
-## Generators for various targets
+### Generators for various targets
 ---
 
    author: Jay Convertino  
