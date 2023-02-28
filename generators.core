@@ -37,3 +37,16 @@ generators:
       Parameters:
         src_dirs (str): Directories containing the cmake file for a library to build.
         build_dir(str): Where to build output products. This defaults to build.
+        cmake_args(str): Arguments added to cmake build.
+
+  git_pull:
+    interpreter: python3
+    command: python/git_pull.py
+    description: Pull git repos
+    usage: |
+      Bunch of cool stuff and such.
+      
+      Parameters:
+        repo_url (str): URL where the git repo resides.
+        repo_dir (str): folder to put the pull.
+        tag (str): tag to checkout from pull.

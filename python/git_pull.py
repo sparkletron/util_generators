@@ -3,13 +3,15 @@ from fusesoc.capi2.generator import Generator
 import os
 import yaml
 import subprocess
+import git
+import shutil
 
 ################################################################################
-## vpilibcmake
-# @file   vpilibcmake.py
+## git_pull
+# @file   git_pull.py
 # @author Jay Convertino(johnathan.convertino.1@us.af.mil)
-# @date   23.01.01
-# @brief  Build libraries using cmake for vpi libraries.
+# @date   23.02.28
+# @brief  pull git repos
 #
 # @license MIT
 # Copyright 2023 Jay Convertino
@@ -32,29 +34,28 @@ import subprocess
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 ################################################################################
-class vpilibcmake(Generator):
+class git_pull(Generator):
     def run(self):
       #get dirrrs
-      src_dirs  = self.config.get('src_dirs')
-      build_dir = self.config.get('build_dir', 'build')
-      cmake_args= self.config.get('cmake_args')
+      repo_url = self.config.get('repo_url')
+      tag      = self.config.get('tag')
+      repo_dir = self.config.get('repo_dir')
       
-      for dir_idx in src_dirs:
-        if not os.path.exists(self.files_root + '/' + dir_idx + '/' + build_dir):
-          os.makedirs(self.files_root + '/' + dir_idx + '/' + build_dir)
-          
-        try:
-          subprocess.run(["cmake", "../", cmake_args], cwd=self.files_root + '/' + dir_idx + '/' + build_dir)
-        except subprocess.CalledProcessError as error_code:
-          print("cmake error:", error_code.returncode, error_code.output)
-          exit(1)
-          
-        try:
-          subprocess.run(["make"], cwd=self.files_root + '/' + dir_idx + '/' + build_dir)
-        except subprocess.CalledProcessError as error_code:
-          print("make error:", error_code.returncode, error_code.output)
-          exit(1)
+      shutil.rmtree(self.files_root + '/' + repo_dir[0], ignore_errors=True)
       
-g = vpilibcmake()
+      try:
+        repo_data = git.Repo.clone_from(repo_url[0], self.files_root + '/' + repo_dir[0])
+      except Exception as e: 
+        print(e)
+        exit(1)
+        
+      try:
+        if len(tag) > 0:
+          repo_data.git.checkout(tag[0])
+      except Exception as e: 
+        print(e)
+        exit(1)
+        
+g = git_pull()
 g.run()
 g.write()
