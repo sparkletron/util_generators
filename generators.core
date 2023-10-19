@@ -1,6 +1,7 @@
 CAPI=2:
 
-name: AFRL:utility:generators:0.0.0
+name: AFRL:utility:generators:1.0.0
+description: Scripts to help generate ip cores or simulation stuffs.
 
 generators:
   strromgen:

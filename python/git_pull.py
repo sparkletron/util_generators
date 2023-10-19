@@ -5,6 +5,7 @@ import yaml
 import subprocess
 import git
 import shutil
+import logging
 
 ################################################################################
 ## git_pull
@@ -42,7 +43,7 @@ class git_pull(Generator):
       repo_dir = self.config.get('repo_dir')
       
       if os.path.exists(self.files_root + '/' + repo_dir[0]):
-        print("INFO: GIT LIBRARY EXISTS IN PATH, NO PULL.")
+        print("GIT LIBRARY EXISTS IN PATH, NO PULL.")
         exit(0)
       
       try:
