@@ -45,7 +45,11 @@ generators:
     command: python/git_pull.py
     description: Pull git repos
     usage: |
-      Bunch of cool stuff and such.
+      Pull git repos and place them in a particular directory.
+
+      Python Dependencies:
+      - PyYAML
+      - GitPython
       
       Parameters:
         repo_url (str): URL where the git repo resides.

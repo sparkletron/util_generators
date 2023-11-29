@@ -21,7 +21,7 @@
 
 ### CORES
 
-- strromgen:
+#### strromgen
   - interpreter: python3
   - command: python/strromgen.py
   - description: Generate ROMS based on YAML file containing strings and values.
@@ -33,7 +33,7 @@
       - num_bytes   (int):  Number of bytes for integer values.
       - string_size (int):  Number of characters for strings, including null terminator. All added characters will be null terminator.
 
-- vpilibmake:
+#### vpilibmake
   - interpreter: python3
   - command: python/vpilibmake.py
   - description: Generate C libraries for VPI source code using make files.
@@ -41,7 +41,7 @@
   - Parameters:
       - src_dirs (str): Directories containing the makefile for a library to build.
 
-- vpilibcmake:
+#### vpilibcmake
   - interpreter: python3
   - command: python/vpilibcmake.py
   - description: Generate C libraries for VPI source code using cmake files.
@@ -51,7 +51,7 @@
       - build_dir(str): Where to build output products. This defaults to build.
       - cmake_args(str): Arguments added to cmake build.
 
-- git_pull:
+#### git_pull
   - interpreter: python3
   - command: python/git_pull.py
   - description: Pull git repos
@@ -61,4 +61,7 @@
       - repo_dir (str): folder to put the pull.
       - tag (str): tag to checkout from pull.
 
+##### Python Dependencies
+  - PyYAML
+  - GitPython
 
