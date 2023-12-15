@@ -55,3 +55,13 @@ generators:
         repo_url (str): URL where the git repo resides.
         repo_dir (str): folder to put the pull.
         tag (str): tag to checkout from pull.
+
+  gen_qsys:
+    interpreter: python3
+    command: python/gen_qsys.py
+    description: Generate qsys files for quartus projects.
+    usage: |
+      Output qsys file name will always be system_ps_wrapper.qsys
+
+      Parameters:
+        script (str): tcl script to generate the system.
