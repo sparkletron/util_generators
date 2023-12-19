@@ -3,6 +3,7 @@ from fusesoc.capi2.generator import Generator
 import os
 import yaml
 import subprocess
+import pathlib
 
 ################################################################################
 ## vpilibmake
@@ -35,14 +36,18 @@ import subprocess
 class vpilibmake(Generator):
     def run(self):
       #get dirrrs
-      src_dirs   = self.config.get('src_dirs')
+      src_dir   = self.config.get('src_dir')
+      make_args = self.config.get('make_args')
       
-      for dir_idx in src_dirs:
-        try:
-          subprocess.run(["make"], cwd=self.files_root + '/' + dir_idx)
-        except subprocess.CalledProcessError as error_code:
-          print("Make error:", error_code.returncode, error_code.output)
-          exit(1)
+      log = open(self.files_root  + '/' + pathlib.Path(src_dir).name + "_build.log", "w")
+
+      try:
+        subprocess.run(["make", make_args], stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir)
+      except subprocess.CalledProcessError as error_code:
+        print("Make error:", error_code.returncode, error_code.output)
+        exit(1)
+
+      log.close()
       
 g = vpilibmake()
 g.run()

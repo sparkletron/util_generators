@@ -26,7 +26,8 @@ generators:
       Bunch of cool stuff and such.
       
       Parameters:
-        src_dirs (str): Directories containing the makefile for a library to build.
+        src_dir   (str): Directory containing the makefile execute.
+        make_args (str): Make arguments
 
   vpilibcmake:
     interpreter: python3
@@ -36,7 +37,7 @@ generators:
       Bunch of cool stuff and such.
       
       Parameters:
-        src_dirs (str): Directories containing the cmake file for a library to build.
+        src_dir  (str): Directories containing the cmake file for a library to build.
         build_dir(str): Where to build output products. This defaults to build.
         cmake_args(str): Arguments added to cmake build.
 
@@ -54,4 +55,5 @@ generators:
       Parameters:
         repo_url (str): URL where the git repo resides.
         repo_dir (str): folder to put the pull.
-        tag (str): tag to checkout from pull.
+        tag (str): optional, tag to checkout from pull.
+        patch (str): optional, file to patch repo (last step).

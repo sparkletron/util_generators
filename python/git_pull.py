@@ -41,21 +41,29 @@ class git_pull(Generator):
       repo_url = self.config.get('repo_url')
       tag      = self.config.get('tag')
       repo_dir = self.config.get('repo_dir')
+      patch    = self.config.get('patch')
       
       if os.path.exists(self.files_root + '/' + repo_dir[0]):
         print("INFO: GIT library exists in path, no pull.")
         exit(0)
       
       try:
-        repo_data = git.Repo.clone_from(repo_url[0], self.files_root + '/' + repo_dir[0])
+        repo_data = git.Repo.clone_from(repo_url, self.files_root + '/' + repo_dir)
       except Exception as e: 
         print(e)
         exit(1)
-        
+
       try:
-        if len(tag) > 0:
-          repo_data.git.checkout(tag[0])
+        if tag is not None:
+          repo_data.git.checkout(tag)
       except Exception as e: 
+        print(e)
+        exit(1)
+
+      try:
+        if patch is not None:
+          repo_data.git.apply([self.files_root + '/' + patch])
+      except Exception as e:
         print(e)
         exit(1)
         
