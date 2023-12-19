@@ -43,7 +43,7 @@ class git_pull(Generator):
       repo_dir = self.config.get('repo_dir')
       patch    = self.config.get('patch')
       
-      if os.path.exists(self.files_root + '/' + repo_dir[0]):
+      if os.path.exists(self.files_root + '/' + repo_dir):
         print("INFO: GIT library exists in path, no pull.")
         exit(0)
       
