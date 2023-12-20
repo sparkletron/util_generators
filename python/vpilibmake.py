@@ -38,11 +38,13 @@ class vpilibmake(Generator):
       #get dirrrs
       src_dir   = self.config.get('src_dir')
       make_args = self.config.get('make_args')
-      
+
+      make_make_args = ["make"] + make_args
+
       log = open(self.files_root  + '/' + pathlib.Path(src_dir).name + "_build.log", "w")
 
       try:
-        subprocess.run(["make", make_args], stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir)
+        subprocess.run(make_make_args, stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir)
       except subprocess.CalledProcessError as error_code:
         print("Make error:", error_code.returncode, error_code.output)
         exit(1)
