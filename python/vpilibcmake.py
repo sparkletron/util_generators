@@ -39,13 +39,15 @@ class vpilibcmake(Generator):
       build_dir = self.config.get('build_dir', 'build')
       cmake_args= self.config.get('cmake_args')
 
+      cmake_cmake_args = ["cmake", "../"] + cmake_args
+
       log = open(self.files_root  + '/' + pathlib.Path(src_dir).name + "_build.log", "w")
 
       if not os.path.exists(self.files_root + '/' + src_dir + '/' + build_dir):
         os.makedirs(self.files_root + '/' + src_dir + '/' + build_dir)
 
       try:
-        subprocess.run(["cmake", "../", cmake_args], stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir + '/' + build_dir)
+        subprocess.run([cmake_cmake_args], stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir + '/' + build_dir)
       except subprocess.CalledProcessError as error_code:
         print("cmake error:", error_code.returncode, error_code.output)
         exit(1)
