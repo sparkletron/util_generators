@@ -5,8 +5,8 @@ import yaml
 import subprocess
 
 ################################################################################
-## vpilibcmake
-# @file   vpilibcmake.py
+## gen_cmake
+# @file   gen_cmake.py
 # @author Jay Convertino(johnathan.convertino.1@us.af.mil)
 # @date   23.01.01
 # @brief  Build libraries using cmake for vpi libraries.
@@ -32,7 +32,7 @@ import subprocess
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 ################################################################################
-class vpilibcmake(Generator):
+class gen_cmake(Generator):
     def run(self):
       #get dirrrs
       src_dir   = self.config.get('src_dir')
@@ -60,6 +60,6 @@ class vpilibcmake(Generator):
 
       log.close()
       
-g = vpilibcmake()
+g = gen_cmake()
 g.run()
 g.write()

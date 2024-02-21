@@ -6,8 +6,8 @@ import subprocess
 import pathlib
 
 ################################################################################
-## vpilibmake
-# @file   vpilibmake.py
+## gen_make
+# @file   gen_make.py
 # @author Jay Convertino(johnathan.convertino.1@us.af.mil)
 # @date   23.01.01
 # @brief  build libraries using make.
@@ -33,7 +33,7 @@ import pathlib
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 ################################################################################
-class vpilibmake(Generator):
+class gen_make(Generator):
     def run(self):
       #get dirrrs
       src_dir   = self.config.get('src_dir')
@@ -51,6 +51,6 @@ class vpilibmake(Generator):
 
       log.close()
       
-g = vpilibmake()
+g = gen_make()
 g.run()
 g.write()

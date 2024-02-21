@@ -18,9 +18,9 @@ generators:
         num_bytes   (int):  Number of bytes for integer values.
         string_size (int):  Number of characters for strings, including null terminator. All added characters will be null terminator.
 
-  vpilibmake:
+  gen_make:
     interpreter: python3
-    command: python/vpilibmake.py
+    command: python/gen_make.py
     description: Generate C libraries for VPI source code using make files.
     usage: |
       Bunch of cool stuff and such.
@@ -29,9 +29,9 @@ generators:
         src_dir   (str): Directory containing the makefile execute.
         make_args (str): Make arguments
 
-  vpilibcmake:
+  gen_cmake:
     interpreter: python3
-    command: python/vpilibcmake.py
+    command: python/gen_cmake.py
     description: Generate C libraries for VPI source code using cmake files.
     usage: |
       Bunch of cool stuff and such.
