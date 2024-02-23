@@ -3,6 +3,7 @@ from fusesoc.capi2.generator import Generator
 import os
 import yaml
 import subprocess
+import pathlib
 
 ################################################################################
 ## gen_cmake
@@ -47,7 +48,7 @@ class gen_cmake(Generator):
         os.makedirs(self.files_root + '/' + src_dir + '/' + build_dir)
 
       try:
-        subprocess.run([cmake_cmake_args], stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir + '/' + build_dir)
+        subprocess.run(cmake_cmake_args, stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir + '/' + build_dir)
       except subprocess.CalledProcessError as error_code:
         print("cmake error:", error_code.returncode, error_code.output)
         exit(1)
