@@ -106,7 +106,7 @@ class spinalhdl(Generator):
         subprocess.check_call(command_with_args, universal_newlines=True, stdout=log, stderr=log, cwd=self.files_root + '/' + src_dir)
       except subprocess.CalledProcessError as error_code:
         print("ERROR: ", error_code.returncode)
-        print("ERROR: TIP JAVA JRE 17 REQUIRED. Set JAVA_HOME to the correct path, if local jre install will be used.")
+        print("ERROR: Generation failed, see log for details.")
         exit(1)
 
       log.close()
